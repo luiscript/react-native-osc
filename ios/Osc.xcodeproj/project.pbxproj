@@ -30,7 +30,6 @@
 		A94A5846DDCDD05877609854 /* Pods-Osc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Osc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Osc/Pods-Osc.debug.xcconfig"; sourceTree = "<group>"; };
 		B3C8554636F12032832CE0F4 /* Pods_Osc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Osc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5891CC2AC0600A0062D /* Osc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Osc.m; sourceTree = "<group>"; };
-		CB4423FB24102AA20077B13C /* Osc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Osc-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB4423FC24102AA20077B13C /* Osc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Osc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +67,6 @@
 				CB4423FC24102AA20077B13C /* Osc.swift */,
 				B3E7B5891CC2AC0600A0062D /* Osc.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				CB4423FB24102AA20077B13C /* Osc-Bridging-Header.h */,
 				9643B1F0375948BDF593CADE /* Pods */,
 				02D9B5D2C1805746E130F63E /* Frameworks */,
 			);

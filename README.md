@@ -1,12 +1,14 @@
 # react-native-osc
 
+Open Sound Control for React Native
+
 ## Getting started
 
 `$ npm install react-native-osc --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-osc`
+`$ cd ios && pod install `
 
 ## Usage
 ```javascript

@@ -5,10 +5,11 @@ import SwiftOSC
     
     var client:OSCClient!
     
-    @objc(createServer:location:date:)
-    func createServer(name: String, location: String, date: NSNumber) -> Void {
-        client = OSCClient(address: "192.168.1.72", port: 9090)
-        print("cliente creado 192.168.1.72");
+    @objc(createServer:location:port:)
+    func createServer(name: String, location: String, port: NSNumber) -> Void {
+        client = OSCClient(address: name, port: port.intValue)
+        
+        print(name + "-" + port.stringValue);
     }
     
     @objc(sendMessage:location:date:)
