@@ -1,23 +1,29 @@
 {
   "name": "react-native-osc",
-  "title": "React Native Osc",
-  "version": "1.0.0",
-  "description": "TODO",
+  "title": "Open Sound Control for React Native",
+  "version": "0.0.1",
+  "description": "WIP: Native modules for sending and receiving OSC messages in Android & iOS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-osc.git",
-    "baseUrl": "https://github.com/github_account/react-native-osc"
+    "url": "git+https://github.com/luiscript/react-native-osc.git",
+    "baseUrl": "https://github.com/luiscript/react-native-osc"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "react-native-osc",
+    "open",
+    "sound",
+    "control",
+    "osc",
+    "message"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Luis Fernando García Pérez",
+    "email": "contacto@luiscript.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",

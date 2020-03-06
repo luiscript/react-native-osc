@@ -1,19 +1,45 @@
 # react-native-osc
 
-Open Sound Control for React Native
+WIP: Open Sound Control for React Native. (iOS only at the moment)
 
-## Getting started
+## Getting started:
 
 `$ npm install react-native-osc --save`
 
-### Mostly automatic installation
+`$ cd ios && pod install`
 
-`$ cd ios && pod install `
-
-## Usage
+## Usage:
 ```javascript
-import Osc from 'react-native-osc';
+import osc from 'react-native-osc';
 
-// TODO: What to do with the module?
-Osc;
+osc.createServer("192.168.1.64", 9090);
+osc.sendMessage("/test/", 1.0);
+
+//see example folder for more details.
 ```
+
+## Supported types:
+
+~~i Integer: two’s complement int32.~~
+
+f Float: IEEE float32.
+
+~~s NULL-terminated ASCII string.~~
+
+~~b Blob, (aka byte array) with size.~~
+
+~~T True.~~
+
+~~F False.~~
+
+~~N Null: (aka nil, None, etc).~~
+
+~~I Impulse: (aka “bang”).~~
+
+## Tested with:
+
+Xcode:11.3.1 - iOS_SDK: 13 - RN: 0.61.5
+
+
+
+
