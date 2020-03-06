@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59099992490E353DB419AF48 /* Pods_Osc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3C8554636F12032832CE0F4 /* Pods_Osc.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* Osc.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Osc.m */; };
 		CB4423FD24102AA20077B13C /* Osc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4423FC24102AA20077B13C /* Osc.swift */; };
-		CBCA3E252411C2E00091F2AB /* SwiftOSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA3E242411C2E00091F2AB /* SwiftOSC.framework */; };
-		CBCA3E262411C2EC0091F2AB /* SwiftOSC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CBCA3E242411C2E00091F2AB /* SwiftOSC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CBCA3E262411C2EC0091F2AB /* SwiftOSC.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libOsc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOsc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C5A2FF884E136E18FBB42BA /* Pods-Osc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Osc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Osc/Pods-Osc.release.xcconfig"; sourceTree = "<group>"; };
+		A94A5846DDCDD05877609854 /* Pods-Osc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Osc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Osc/Pods-Osc.debug.xcconfig"; sourceTree = "<group>"; };
+		B3C8554636F12032832CE0F4 /* Pods_Osc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Osc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5891CC2AC0600A0062D /* Osc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Osc.m; sourceTree = "<group>"; };
 		CB4423FB24102AA20077B13C /* Osc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Osc-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB4423FC24102AA20077B13C /* Osc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Osc.swift; sourceTree = "<group>"; };
-		CBCA3E242411C2E00091F2AB /* SwiftOSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOSC.framework; path = Frameworks/SwiftOSC.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,13 +39,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBCA3E252411C2E00091F2AB /* SwiftOSC.framework in Frameworks */,
+				59099992490E353DB419AF48 /* Pods_Osc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02D9B5D2C1805746E130F63E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3C8554636F12032832CE0F4 /* Pods_Osc.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,16 +69,18 @@
 				B3E7B5891CC2AC0600A0062D /* Osc.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				CB4423FB24102AA20077B13C /* Osc-Bridging-Header.h */,
-				CBB50C6E24106B8700DA6A9F /* Frameworks */,
+				9643B1F0375948BDF593CADE /* Pods */,
+				02D9B5D2C1805746E130F63E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		CBB50C6E24106B8700DA6A9F /* Frameworks */ = {
+		9643B1F0375948BDF593CADE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CBCA3E242411C2E00091F2AB /* SwiftOSC.framework */,
+				A94A5846DDCDD05877609854 /* Pods-Osc.debug.xcconfig */,
+				2C5A2FF884E136E18FBB42BA /* Pods-Osc.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +90,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "Osc" */;
 			buildPhases = (
+				F1154A54A0C15A5B1F6D44C1 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -125,6 +136,27 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F1154A54A0C15A5B1F6D44C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Osc-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -248,6 +280,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A94A5846DDCDD05877609854 /* Pods-Osc.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -269,11 +302,13 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Osc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s armv7-apple-ios x86_64";
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C5A2FF884E136E18FBB42BA /* Pods-Osc.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -294,6 +329,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Osc-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s armv7-apple-ios x86_64";
 			};
 			name = Release;
 		};

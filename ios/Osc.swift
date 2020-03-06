@@ -7,8 +7,8 @@ import SwiftOSC
     
     @objc(createServer:location:date:)
     func createServer(name: String, location: String, date: NSNumber) -> Void {
-        client = OSCClient(address: "localhost", port: 9090)
-        print("cliente creado");
+        client = OSCClient(address: "192.168.1.72", port: 9090)
+        print("cliente creado 192.168.1.72");
     }
     
     @objc(sendMessage:location:date:)
@@ -27,7 +27,7 @@ import SwiftOSC
             1.0
         )
         client.send(message)
-        print("message enviado");
+        print("message enviado chingón");
     }
     
     @objc(addEvent:location:date:)
