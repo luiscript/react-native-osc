@@ -2,7 +2,7 @@
   "name": "react-native-osc",
   "title": "Open Sound Control for React Native",
   "version": "0.0.1",
-  "description": "WIP: Native modules for sending and receiving OSC messages in Android & iOS",
+  "description": "Native modules for sending and receiving OSC messages in Android & iOS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

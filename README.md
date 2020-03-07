@@ -6,6 +6,10 @@ Open Sound Control for React Native.
 
 `$ npm install react-native-osc --save`
 
+In ios/Podfile add:
+
+`use_frameworks!` 
+
 `$ cd ios && pod install`
 
 ## Features:
