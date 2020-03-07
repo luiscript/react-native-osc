@@ -20,8 +20,10 @@ import {
 } from 'react-native';
 
 var osc = NativeModules.Osc;
-osc.createServer("192.168.1.64", 9090);
-osc.sendMessage("/test/", 1.0);
+osc.createClient("localhost", 9090);
+osc.sendMessage("/test/", [1.0]);
+
+console.log("OSC", osc);
 
 const App: () => React$Node = () => {
   return (
@@ -35,7 +37,7 @@ const App: () => React$Node = () => {
         maximumValue={1}
         minimumTrackTintColor="#FFFFFF"
         maximumTrackTintColor="#000000"
-        onValueChange={value => osc.sendMessage("/test/", value)}
+        onValueChange={value => osc.sendMessage("/test/", [value, 1 - value])}
       />
     </View>
   );

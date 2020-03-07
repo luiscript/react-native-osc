@@ -12,15 +12,15 @@ WIP: Open Sound Control for React Native. (iOS only at the moment)
 ```javascript
 import osc from 'react-native-osc';
 
-osc.createServer("192.168.1.64", 9090);
-osc.sendMessage("/test/", 1.0);
+osc.createClient("localhost", 9090);
+osc.sendMessage("/address/", [1.0, 0.0]);
 
 //see example folder for more details.
 ```
 
 ## Supported types:
 
-~~i Integer: two’s complement int32.~~
+i Integer: two’s complement int32.
 
 f Float: IEEE float32.
 
@@ -28,9 +28,9 @@ f Float: IEEE float32.
 
 ~~b Blob, (aka byte array) with size.~~
 
-~~T True.~~
+T True.
 
-~~F False.~~
+F False.
 
 ~~N Null: (aka nil, None, etc).~~
 
