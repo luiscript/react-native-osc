@@ -1,14 +1,12 @@
 # react-native-osc
 
-Open Sound Control for React Native.
+Native Open Sound Control support for React Native (iOS & Android).
 
 ## Getting started:
 
 `$ npm install react-native-osc --save`
 
-In ios/Podfile add:
-
-`use_frameworks!` 
+In ios/Podfile add: `use_frameworks!` 
 
 `$ cd ios && pod install`
 
@@ -18,7 +16,7 @@ Send OSC messages in iOS.
 
 ~~Receive OSC messages in IOS.~~
 
-~~Send OSC messages in Android.~~
+Send OSC messages in Android.
 
 ~~Receive OSC messages in Android.~~
 

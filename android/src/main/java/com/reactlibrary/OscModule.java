@@ -31,16 +31,17 @@ import com.facebook.react.bridge.Callback;
 import java.net.*;
 import java.util.*;
 
+import com.facebook.react.bridge.ReadableArray;
+import com.illposed.osc.*;
 
 public class OscModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
 
-    /*private String ipAddress = "localhost";
+    private String ipAddress = "localhost";
     private int portNumber = 9000;
 
     private OSCPortOut client;
-    private OSCPortIn server;*/
 
     public OscModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -54,32 +55,30 @@ public class OscModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void createClient(String address, int port){
-       /* ipAddress = address;
+        ipAddress = address;
         portNumber = port;
 
-        try {
-            client = new OSCPortOut(InetAddress.getByName(ipAddress), portNumber);
+        try { client = new OSCPortOut(InetAddress.getByName(ipAddress), portNumber);
         } catch(UnknownHostException e) {
 
             return;
         } catch(Exception e) {
 
             return;
-        }*/
+        }
 
     }
 
     @ReactMethod
-    public void sendMessage(String address, float value){
-        /*Object[] dataToSend = new Object[1];
-        dataToSend[0] = value;
-        OSCMessage message = new OSCMessage(ipAddress, dataToSend);
-        client.send(message);*/
+    public void sendMessage(String address, ReadableArray args){
+        OSCMessage msg = new OSCMessage(address, args.toArrayList());
+
+        try {
+            client.send(msg);
+        } catch (Exception e) {
+
+        }
+
     }
 
-    @ReactMethod
-    public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
-        // TODO: Implement some actually useful functionality
-        callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
-    }
 }
