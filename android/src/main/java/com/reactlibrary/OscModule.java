@@ -23,25 +23,39 @@ SOFTWARE.
 
 package com.reactlibrary;
 
+import androidx.annotation.NonNull;
+
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Dynamic;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 
 import java.net.*;
 import java.util.*;
 
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
+import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.illposed.osc.*;
+
+import javax.annotation.Nullable;
 
 public class OscModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
 
     private String ipAddress = "localhost";
-    private int portNumber = 9000;
+    private int portIn = 9000;
+    private int portOut = 9001;
 
     private OSCPortOut client;
+    private OSCPortIn server;
 
     public OscModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -56,9 +70,9 @@ public class OscModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void createClient(String address, int port){
         ipAddress = address;
-        portNumber = port;
+        portOut = port;
 
-        try { client = new OSCPortOut(InetAddress.getByName(ipAddress), portNumber);
+        try { client = new OSCPortOut(InetAddress.getByName(ipAddress), portOut);
         } catch(UnknownHostException e) {
 
             return;
@@ -79,6 +93,62 @@ public class OscModule extends ReactContextBaseJavaModule {
 
         }
 
+    }
+
+    @ReactMethod
+    public void createServer(int port){
+        portIn = port;
+
+        try {
+            server = new OSCPortIn(portIn);
+
+            OSCListener listener = new OSCListener() {
+                public void acceptMessage(java.util.Date time, OSCMessage message) {
+                    WritableMap params = Arguments.createMap();
+                    params.putString("address", message.getAddress());
+
+                    WritableArray data = Arguments.createArray();
+                    List<Object> arrayData  = message.getArguments();
+
+
+                    for (Object arrayItem : arrayData) {
+
+                        if (arrayItem instanceof Float){
+                            Float val = (Float) arrayItem;
+                            data.pushDouble(val);
+                        } else if(arrayItem instanceof String){
+                            String val = (String) arrayItem;
+                            data.pushString(val);
+                        } else if(arrayItem instanceof Integer){
+                            Integer val = (Integer) arrayItem;
+                            data.pushInt(val);
+                        }
+
+                    }
+
+                    params.putArray("data", data);
+
+                    sendEvent(reactContext, "GotMessage", params);
+                }
+            };
+
+
+            server.addListener("/*", listener);
+            server.startListening();
+
+        } catch (Exception e){
+
+        }
+
+
+    }
+
+    private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
     }
 
 }
