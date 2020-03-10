@@ -1,10 +1,10 @@
-# react-native-osc
+# react-native-osc 0.0.3
 
-Native Open Sound Control support for React Native (iOS & Android).
+Open Sound Control support for sending and receiving OSC messages in React Native (iOS & Android).
 
+On the native side: 
 [JavaOSC](https://github.com/hoijui/JavaOSC/) for Android & 
 [SwiftOSC](https://github.com/ExistentialAudio/SwiftOSC) for iOS.
-
 
 ## Getting started:
 
@@ -14,32 +14,25 @@ In ios/Podfile add: `use_frameworks!`
 
 `$ cd ios && pod install`
 
-## Features:
-
-Send OSC messages in iOS.
-
-~~Receive OSC messages in IOS.~~
-
-Send OSC messages in Android.
-
-Receive OSC messages in Android.
-
-
 ## Usage:
 ```javascript
 import osc from 'react-native-osc';
 
-//To send messages:
-osc.createClient("localhost", 9090);
+var portIn = 9999
+var portOut = 9090
+
+//create a client and send a message
+osc.createClient("localhost", portOut);
 osc.sendMessage("/address/", [1.0, 0.0]);
 
 
-//To receive messages (Android only):
+//suscribe to GotMessage event to receive OSC messages
 const eventEmitter = new NativeEventEmitter(osc);
-eventEmitter.addListener('GotMessage', (newMessage) => {
-  console.log("New OSC message: ", newMessage);
+eventEmitter.addListener('GotMessage', (oscMessage) => {
+  console.log("message: ", oscMessage);
 });
-osc.createServer(9999);
+
+osc.createServer(portIn);
 ```
 
 ## Supported types:
@@ -66,7 +59,28 @@ Xcode:11.3.1 - iOS_SDK: 13 - RN: 0.61.5
 
 ## License
 
-MIT
+The MIT License (MIT)
+
+Copyright (C) 2020 Luis Fernando Garcia Perez
+contacto@luiscript.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## JavaOSC
 
