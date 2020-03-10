@@ -25,20 +25,19 @@ SOFTWARE.
 import Foundation
 import SwiftOSC
 
-@objc(Osc) class Osc: NSObject {
-    
+@objc(Osc) class Osc : RCTEventEmitter, OSCServerDelegate {
+        
     var client:OSCClient!
     var server:OSCServer!
     
     @objc(createClient:port:)
-    func createClient(name: String, port: NSNumber) -> Void {
-        client = OSCClient(address: name, port: port.intValue)
-        print("clientacho created")
+    func createClient(address: String, port: NSNumber) -> Void {
+        client = OSCClient(address: address, port: port.intValue)
     }
     
     @objc(sendMessage:data:)
-    func sendMessage(name: String, data: NSArray) -> Void {
-        let message = OSCMessage(OSCAddressPattern(name))
+    func sendMessage(address: String, data: NSArray) -> Void {
+        let message = OSCMessage(OSCAddressPattern(address))
         
         for value in data {
             switch value {
@@ -55,10 +54,27 @@ import SwiftOSC
         client.send(message)
     }
     
-    @objc func createServer() -> Void {
-        
+    @objc(createServer:port:)
+    func createServer(address: String, port: NSNumber) -> Void {
+        server = OSCServer(address: address, port: port.intValue)
+        server.delegate = self
+        server.start()
     }
+    
+    func didReceive(_ message: OSCMessage) {
+        let response: NSMutableDictionary = [:]
+        response["address"] = message.address.string
+        response["data"] = message.arguments
+        sendEvent(withName: "GotMessage", body: response)
+    }
+      
+    override func supportedEvents() -> [String]! {
+      return ["GotMessage"]
+    }
+    
+    override class func requiresMainQueueSetup() -> Bool {
+        return false
+    }
+    
 }
-
-
 
