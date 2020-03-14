@@ -14,27 +14,50 @@ In ios/Podfile add: `use_frameworks!`
 
 `$ cd ios && pod install`
 
-## Usage:
+## Usage
+
+### Send OSC message (OSC client):
 ```javascript
 import osc from 'react-native-osc';
 
-var portIn = 9999
-var portOut = 9090
+var portOut = 9090;
 
-//create a client and send a message
-osc.createClient("localhost", portOut);
-osc.sendMessage("/address/", [1.0, 0.0]);
+//OSC server IP address like "192.168.1.80" or "localhost"
+var address = "localhost"; 
 
+//create the client only once in componentDidMount
+osc.createClient(address, portOut);
 
-//suscribe to GotMessage event to receive OSC messages
+//now you can send OSC messages like this (only after creating a client)
+osc.sendMessage("/address/", [1.0, 0.5]);
+
+//send any combination of integers, floats, bool & string values:
+osc.sendMessage("/address/", ["string value", 1, false, 0.5]);
+```
+
+### Receive OSC messages (OSC server):
+```javascript
+import {
+  NativeEventEmitter
+} from 'react-native';
+
+import osc from 'react-native-osc';
+
+//create an event emiter sending the native osc module as parameter 
 const eventEmitter = new NativeEventEmitter(osc);
+
+var portIn = 9999;
+
+//subscribe to GotMessage event to receive OSC messages
 eventEmitter.addListener('GotMessage', (oscMessage) => {
   console.log("message: ", oscMessage);
 });
 
+//create the osc server to start listeing to OSC messages
 osc.createServer(portIn);
-```
 
+//to receive OSC messages your client should be addressing your device IP address
+```
 ## Supported types:
 
 i Integer: two’s complement int32.
