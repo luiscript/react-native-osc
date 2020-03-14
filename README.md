@@ -46,15 +46,21 @@ import osc from 'react-native-osc';
 //create an event emiter sending the native osc module as parameter 
 const eventEmitter = new NativeEventEmitter(osc);
 
-var portIn = 9999;
-
 //subscribe to GotMessage event to receive OSC messages
 eventEmitter.addListener('GotMessage', (oscMessage) => {
   console.log("message: ", oscMessage);
 });
 
-//create the osc server to start listeing to OSC messages
-osc.createServer(portIn);
+var portIn = 9999;
+
+//iOS can listen to specific "/adress/", leave it emtpy to listen to all 
+var addressToListen = "";
+
+// to start listening to OSC messages (iOS):
+osc.createServer(addressToListen, portIn);
+
+// Android:
+osc.createServer(portIn) 
 
 //to receive OSC messages your client should be addressing your device IP address
 ```
