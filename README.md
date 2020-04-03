@@ -86,6 +86,10 @@ F False.
 
 Xcode:11.3.1 - iOS_SDK: 13 - RN: 0.61.5
 
+## Projects using this module:
+
+[MIDITROL](https://miditrol.com)
+
 ## License
 
 The MIT License (MIT)

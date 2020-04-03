@@ -86,11 +86,12 @@ public class OscModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void sendMessage(String address, ReadableArray args){
         OSCMessage msg = new OSCMessage(address, args.toArrayList());
-
         try {
             client.send(msg);
         } catch (Exception e) {
-
+            WritableMap params = Arguments.createMap();
+            params.putString("error", address + ":" + e.toString());
+            sendEvent(reactContext, "GotMessage", params);
         }
 
     }
@@ -109,10 +110,7 @@ public class OscModule extends ReactContextBaseJavaModule {
 
                     WritableArray data = Arguments.createArray();
                     List<Object> arrayData  = message.getArguments();
-
-
                     for (Object arrayItem : arrayData) {
-
                         if (arrayItem instanceof Float){
                             Float val = (Float) arrayItem;
                             data.pushDouble(val);
@@ -123,9 +121,7 @@ public class OscModule extends ReactContextBaseJavaModule {
                             Integer val = (Integer) arrayItem;
                             data.pushInt(val);
                         }
-
                     }
-
                     params.putArray("data", data);
 
                     sendEvent(reactContext, "GotMessage", params);

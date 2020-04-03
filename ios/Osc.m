@@ -30,5 +30,6 @@ SOFTWARE.
 RCT_EXTERN_METHOD(createClient:(NSString *)address port:(nonnull NSNumber *)port)
 RCT_EXTERN_METHOD(sendMessage:(NSString *)address data:(NSArray *)data)
 RCT_EXTERN_METHOD(createServer:(NSString *)address port:(nonnull NSNumber *)port)
+RCT_EXTERN_METHOD(createServer:(nonnull NSNumber *)port)
 @end
 
