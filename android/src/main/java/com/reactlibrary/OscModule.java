@@ -68,7 +68,7 @@ public class OscModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void createClient(String address, int port){
+    public void createClient(String address, int port) {
         ipAddress = address;
         portOut = port;
 
@@ -84,8 +84,24 @@ public class OscModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void sendMessage(String address, ReadableArray args){
-        OSCMessage msg = new OSCMessage(address, args.toArrayList());
+    public void sendMessage(String address, ReadableArray args) {
+        // OSCMessage msg = new OSCMessage(address, args.toArrayList());
+        ArrayList arr = new ArrayList();
+        for (int i = 0; i < args.size(); i++) {
+            switch (args.getType(i)) {
+                case Boolean:
+                    arr.add(args.getBoolean(i));
+                    break;
+                case Number:
+                    arr.add(Float(args.getDouble(i)));
+                    break;
+                case String:
+                default:
+                    arr.add(args.getString(i));
+                    break;
+            }
+        }
+        OSCMessage msg = new OSCMessage(address, arr);
         try {
             client.send(msg);
         } catch (Exception e) {
