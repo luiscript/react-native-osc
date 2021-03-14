@@ -93,7 +93,15 @@ public class OscModule extends ReactContextBaseJavaModule {
                     arr.add(args.getBoolean(i));
                     break;
                 case Number:
-                    arr.add((float) args.getDouble(i));
+                    double dVal = args.getDouble(i);
+                    int iVal = (int) dVal;
+                    if (iVal == dVal) {
+                        // we have an int
+                        arr.add(iVal);
+                    } else {
+                        // we have a floating point number
+                        arr.add((float) dVal);
+                    }
                     break;
                 case String:
                 default:
